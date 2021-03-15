@@ -25,10 +25,11 @@ function InventoryNbi67() {
         <tr>
           <th scope="row">2</th>
           <td>Jacob</td>
-          <td>5</td>
+          <td>0</td>
           <td>$27.32</td>
           <td>
-              <button className="btn btn-success">Add</button>
+              <button className="btn btn btn-secondary">OUT OF STOCK</button>
+
           </td>
         </tr>      
       </tbody>
