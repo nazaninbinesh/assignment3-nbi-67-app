@@ -1,7 +1,12 @@
 import React from "react";
 
-function InventoryNbi67() {
+function InventoryNbi67(props) {      
+  if (!props.productList) return 'no data';
+  if (!Array.isArray(props.productList)) return 'results are not array'
+  const products = props.productList;
+ 
   return (
+    <div className="col-7">           
     <table className="table table-striped">
       <thead>
         <tr>
@@ -12,28 +17,26 @@ function InventoryNbi67() {
           <th scope="col">Add</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>3</td>
-          <td>$2.99</td>
-          <td>
-              <button className="btn btn-success">Add</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>0</td>
-          <td>$27.32</td>
-          <td>
-              <button className="btn btn btn-secondary">OUT OF STOCK</button>
-
-          </td>
-        </tr>      
+      <tbody>        
+         {products.map((product, key) => (
+          <tr key={key}>
+            <td scope="row">{product.id}</td>
+            <td>{product.name}</td>
+            <td>{product.quantity}</td>
+            <td>${product.price}</td>
+            <td>
+              {(product.quantity > 0 && props.btnStatus!=true) ?
+                <button className="btn btn-success" value={product.id} onClick={props.addItemToCart}>Add</button>                
+                :
+                <button className="btn btn-secondary" value={product.id}>OUT OF STOCK</button>
+              }
+              
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
+    </div>
   );
 }
 
