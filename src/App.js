@@ -61,6 +61,7 @@ function App() {
       setCurrentProducts(json.CurrentCart)
       setLoading(false);
       setProducts(json.Inventory);
+      setTotalPrice(json.totalCartPrice);
     })
     
   }
